@@ -1,0 +1,1336 @@
+%% bare_jrnl.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% see http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE
+%% journal paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[journal]{IEEEtran}
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[journal]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{./figures/}{../results/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  \graphicspath{{./figures/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+\usepackage{algorithm}
+\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{multirow}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+%\ifCLASSOPTIONcaptionsoff
+%  \usepackage[nomarkers]{endfloat}
+% \let\MYoriglatexcaption\caption
+% \renewcommand{\caption}[2][\relax]{\MYoriglatexcaption[#2]{#2}}
+%\fi
+% endfloat.sty was written by James Darrell McCauley, Jeff Goldberg and 
+% Axel Sommerfeldt. This package may be useful when used in conjunction with 
+% IEEEtran.cls'  captionsoff option. Some IEEE journals/societies require that
+% submissions have lists of figures/tables at the end of the paper and that
+% figures/tables without any captions are placed on a page by themselves at
+% the end of the document. If needed, the draftcls IEEEtran class option or
+% \CLASSINPUTbaselinestretch interface can be used to increase the line
+% spacing as well. Be sure and use the nomarkers option of endfloat to
+% prevent endfloat from "marking" where the figures would have been placed
+% in the text. The two hack lines of code above are a slight modification of
+% that suggested by in the endfloat docs (section 8.4.1) to ensure that
+% the full captions always appear in the list of figures/tables - even if
+% the user used the short optional argument of \caption[]{}.
+% IEEE papers do not typically make use of \caption[]'s optional argument,
+% so this should not be an issue. A similar trick can be used to disable
+% captions of packages such as subfig.sty that lack options to turn off
+% the subcaptions:
+% For subfig.sty:
+% \let\MYorigsubfloat\subfloat
+% \renewcommand{\subfloat}[2][\relax]{\MYorigsubfloat[]{#2}}
+% However, the above trick will not work if both optional arguments of
+% the \subfloat command are used. Furthermore, there needs to be a
+% description of each subfigure *somewhere* and endfloat does not add
+% subfigure captions to its list of figures. Thus, the best approach is to
+% avoid the use of subfigure captions (many IEEE journals avoid them anyway)
+% and instead reference/explain all the subfigures within the main caption.
+% The latest version of endfloat.sty and its documentation can obtained at:
+% http://www.ctan.org/pkg/endfloat
+%
+% The IEEEtran \ifCLASSOPTIONcaptionsoff conditional can also be used
+% later in the document, say, to conditionally put the References on a 
+% page by themselves.
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+\usepackage{url}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+    citecolor=blue,
+}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{A Study of Machine Learning Algorithms on Housing Price Prediction}
+%
+%
+% author names and IEEE memberships
+% note positions of commas and nonbreaking spaces ( ~ ) LaTeX will not break
+% a structure at a ~ so this keeps an author's name from being broken across
+% two lines.
+% use \thanks{} to gain access to the first footnote area
+% a separate \thanks must be used for each paragraph as LaTeX2e's \thanks
+% was not built to handle multiple paragraphs
+%
+
+\author{RJ Jock% <-this % stops a space
+\\ University of North Carolina Charlotte
+\\ ITCS5356-001
+}
+
+% note the % following the last \IEEEmembership and also \thanks - 
+% these prevent an unwanted space from occurring between the last author name
+% and the end of the author line. i.e., if you had this:
+% 
+% \author{....lastname \thanks{...} \thanks{...} }
+%                     ^------------^------------^----Do not want these spaces!
+%
+% a space would be appended to the last name and could cause every name on that
+% line to be shifted left slightly. This is one of those "LaTeX things". For
+% instance, "\textbf{A} \textbf{B}" will typeset as "A B" not "AB". To get
+% "AB" then you have to do: "\textbf{A}\textbf{B}"
+% \thanks is no different in this regard, so shield the last } of each \thanks
+% that ends a line with a % and do not let a space in before the next \thanks.
+% Spaces after \IEEEmembership other than the last one are OK (and needed) as
+% you are supposed to have spaces between the names. For what it is worth,
+% this is a minor point as most people would not even notice if the said evil
+% space somehow managed to creep in.
+
+
+
+% The paper headers
+% The only time the second header will appear is for the odd numbered pages
+% after the title page when using the twoside option.
+% 
+% *** Note that you probably will NOT want to include the author's ***
+% *** name in the headers of peer review papers.                   ***
+% You can use \ifCLASSOPTIONpeerreview for conditional compilation here if
+% you desire.
+
+
+
+
+% If you want to put a publisher's ID mark on the page you can do it like
+% this:
+%\IEEEpubid{0000--0000/00\$00.00~\copyright~2015 IEEE}
+% Remember, if you use this you must call \IEEEpubidadjcol in the second
+% column for its text to clear the IEEEpubid mark.
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract or keywords.
+\begin{abstract}
+Housing price prediction is a fundamental problem in real estate valuation and economic forecasting. This study implements and compares five machine learning regression models for predicting housing prices using the Kaggle House Prices dataset. Three classical algorithms (Linear Regression, Polynomial Regression, and Ridge Regression) are implemented alongside two advanced methods from recent literature: Support Vector Regression (SVR) and Random Forest Regression. Comprehensive preprocessing including missing value imputation, feature encoding, outlier removal, and log transformation was applied to the dataset of 1,460 training samples with 81 features. Results demonstrate that Random Forest achieves the best performance with a validation R² of 0.8908 and RMSE of \$17,566, followed closely by Linear and Ridge Regression (R² $\approx$ 0.87). Polynomial Regression exhibited severe overfitting (training R² = 1.0, validation R² = 0.64), while SVR achieved moderate performance (R² = 0.8671). The study provides insights into model selection trade-offs between interpretability, computational complexity, and predictive accuracy for structured regression tasks.
+\end{abstract}
+
+% Note that keywords are not normally used for peerreview papers.
+
+
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% The very first letter is a 2 line initial drop letter followed
+% by the rest of the first word in caps.
+\IEEEPARstart{H}{ousing} price prediction represents a critical challenge in real estate analytics, financial modeling, and urban planning. Accurate valuation models enable buyers, sellers, and investors to make informed decisions, while also providing insights into economic trends and market dynamics. The complexity of housing prices stems from the multitude of factors that influence property values---from physical characteristics like square footage and number of bedrooms to neighborhood attributes, market conditions, and temporal trends.
+
+\subsection{Problem Statement and Objective}
+The primary objective of this study is to develop and evaluate machine learning models capable of accurately predicting housing sale prices based on property features. Specifically, we aim to:
+
+\begin{itemize}
+    \item Implement and compare three classical machine learning algorithms learned in coursework: Linear Regression, Polynomial Regression, and Ridge Regression
+    \item Reproduce and evaluate two advanced methods from recent peer-reviewed literature: Support Vector Regression (SVR) from Manasa et al. (2020) \cite{manasa2020} and Random Forest Regression from Ho et al. (2021) \cite{ho2021}
+    \item Perform comprehensive preprocessing and feature engineering on real-world housing data
+    \item Analyze model performance using multiple evaluation metrics and provide interpretable insights
+    \item Identify strengths, limitations, and practical trade-offs of different modeling approaches
+\end{itemize}
+
+\subsection{Dataset Description}
+This study utilizes the Kaggle House Prices: Advanced Regression Techniques dataset \cite{kaggle2016}, which provides comprehensive information about residential properties in Ames, Iowa. The dataset characteristics are:
+
+\begin{itemize}
+    \item \textbf{Training Set:} 1,460 samples
+    \item \textbf{Test Set:} 1,459 samples
+    \item \textbf{Features:} 81 variables (including ID and target)
+    \item \textbf{Target Variable:} SalePrice (continuous, ranging from \$34,900 to \$755,000)
+    \item \textbf{Feature Types:}
+    \begin{itemize}
+        \item Numerical: 38 features (e.g., LotArea, GrLivArea, YearBuilt)
+        \item Categorical: 43 features (e.g., Neighborhood, HouseStyle, Foundation)
+    \end{itemize}
+    \item \textbf{Missing Data:} Present in 19 features, requiring imputation strategies
+\end{itemize}
+
+The dataset's richness and complexity make it ideal for exploring various machine learning techniques while addressing real-world data challenges such as missing values, categorical encoding, feature scaling, and non-linear relationships.
+
+\subsection{Paper Structure}
+The remainder of this report is organized as follows: Section II describes the methodology including preprocessing, feature engineering, and implementation details of all five models. Section III presents comprehensive results and evaluation metrics with comparative analysis. Section IV discusses the findings, model strengths and limitations, and implementation challenges. Section V concludes with key insights and suggestions for future work. Section VI provides links to the implementation code repository, and Section VII lists all references.
+
+% needed in second column of first page if using \IEEEpubid
+%\IEEEpubidadjcol
+
+\section{Methodology}
+
+This section details the data preprocessing pipeline, feature engineering strategies, and implementation specifics of all five regression models.
+
+\subsection{Data Preprocessing and Feature Engineering}
+
+A comprehensive preprocessing pipeline was implemented to address data quality issues and prepare features for modeling:
+
+\subsubsection{Missing Value Treatment}
+The dataset contained missing values in 19 features. We employed a dual-strategy approach:
+\begin{itemize}
+    \item \textbf{Removal:} Features with $>50\%$ missing data (5 features including PoolQC, MiscFeature, Alley, Fence, and FireplaceQu) were dropped
+    \item \textbf{Imputation:} 
+    \begin{itemize}
+        \item Numerical features: Median imputation using \texttt{SimpleImputer}
+        \item Categorical features: Mode imputation
+    \end{itemize}
+\end{itemize}
+
+\subsubsection{Outlier Detection and Removal}
+Outliers were identified and removed using the Interquartile Range (IQR) method:
+\begin{equation}
+    \text{Lower Bound} = Q1 - 3 \times IQR
+\end{equation}
+\begin{equation}
+    \text{Upper Bound} = Q3 + 3 \times IQR
+\end{equation}
+This resulted in the removal of 15 extreme data points, reducing the training set from 1,460 to 1,445 samples.
+
+\subsubsection{Feature Encoding}
+\begin{itemize}
+    \item \textbf{Categorical Features:} One-hot encoding with \texttt{drop='first'} to avoid multicollinearity
+    \item \textbf{Result:} Expanded from 76 features to 267 features after encoding
+\end{itemize}
+
+\subsubsection{Feature Scaling}
+StandardScaler was applied to normalize all features:
+\begin{equation}
+    z = \frac{x - \mu}{\sigma}
+\end{equation}
+where $\mu$ is the mean and $\sigma$ is the standard deviation.
+
+\subsubsection{Advanced Feature Engineering}
+\begin{itemize}
+    \item \textbf{Skewness Correction:} Log transformation applied to features with $|\text{skewness}| > 0.75$
+    \item \textbf{Multicollinearity Removal:} Features with correlation $> 0.95$ were identified and removed using variance threshold
+    \item \textbf{Target Transformation:} Applied $\log(1 + y)$ transformation to SalePrice to normalize the distribution
+\end{itemize}
+
+\subsubsection{Train-Validation Split}
+The preprocessed data was split 80-20 into training (1,168 samples) and validation (292 samples) sets using \texttt{random\_state=42} for reproducibility.
+
+\subsection{Data Quality Assessment}
+
+Figure \ref{fig:preprocessing} illustrates the data quality improvements achieved through our preprocessing pipeline. The visualizations demonstrate the effectiveness of missing value treatment, outlier removal, and feature distribution normalization.
+
+\begin{figure*}[!t]
+\centering
+\includegraphics[width=6.5in]{../results/beforeandafter_comparison}
+\caption{Before and after comparison of data preprocessing. Left panels show original data characteristics including missing values and outlier distributions. Right panels demonstrate improved data quality after preprocessing, with reduced missing values and normalized feature distributions.}
+\label{fig:preprocessing}
+\end{figure*}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{../results/before_correlationmatrix}
+\caption{Correlation matrix of numerical features before preprocessing. High correlations (>0.95) between certain features informed our multicollinearity removal strategy.}
+\label{fig:correlation}
+\end{figure}
+
+\subsection{Classical Machine Learning Models}
+
+\subsubsection{Linear Regression}
+Linear Regression models the relationship between features and target as:
+\begin{equation}
+    y = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + ... + \beta_n x_n + \epsilon
+\end{equation}
+
+\textbf{Implementation:} Used scikit-learn's \texttt{LinearRegression} with closed-form normal equation solution. No hyperparameter tuning required.
+
+\textbf{Advantages:} Fast training, interpretable coefficients, provides baseline performance.
+
+\textbf{Limitations:} Assumes linear relationships, sensitive to multicollinearity.
+
+\subsubsection{Polynomial Regression}
+Extends linear regression by creating polynomial features:
+\begin{equation}
+    y = \beta_0 + \sum_{i=1}^{n} \beta_i x_i + \sum_{i=1}^{n}\sum_{j=i}^{n} \beta_{ij} x_i x_j + \epsilon
+\end{equation}
+
+\textbf{Implementation:} 
+\begin{itemize}
+    \item Used \texttt{PolynomialFeatures(degree=2, include\_bias=False)}
+    \item Expanded 267 features to 36,045 polynomial features
+    \item Applied \texttt{LinearRegression} on transformed features
+\end{itemize}
+
+\textbf{Advantages:} Captures non-linear relationships, increased model flexibility.
+
+\textbf{Limitations:} High risk of overfitting, computationally expensive, challenging to interpret.
+
+\subsubsection{Ridge Regression}
+Ridge Regression adds L2 regularization to prevent overfitting:
+\begin{equation}
+    \min_{\beta} \left\{ \sum_{i=1}^{N} (y_i - \beta_0 - \sum_{j=1}^{p} \beta_j x_{ij})^2 + \lambda \sum_{j=1}^{p} \beta_j^2 \right\}
+\end{equation}
+
+\textbf{Implementation:}
+\begin{itemize}
+    \item GridSearchCV with $\alpha \in [0.001, 0.01, 0.1, 1, 10, 50, 100, 500, 1000]$
+    \item 5-fold cross-validation
+    \item Optimal $\alpha$ selected based on R² score
+\end{itemize}
+
+\textbf{Advantages:} Reduces overfitting, handles multicollinearity, maintains interpretability.
+
+\textbf{Limitations:} Requires hyperparameter tuning, slightly more complex than standard linear regression.
+
+\subsection{Literature-Based Advanced Models}
+
+\subsubsection{Support Vector Regression (SVR)}
+Based on Manasa et al. (2020) \cite{manasa2020}, SVR finds the hyperplane that best fits the data within an $\epsilon$-insensitive tube:
+
+\begin{equation}
+    \min \frac{1}{2} ||w||^2 + C \sum_{i=1}^{N} (\xi_i + \xi_i^*)
+\end{equation}
+
+subject to:
+\begin{align}
+    y_i - (w \cdot x_i + b) &\leq \epsilon + \xi_i \\
+    (w \cdot x_i + b) - y_i &\leq \epsilon + \xi_i^*
+\end{align}
+
+\textbf{Implementation:}
+\begin{itemize}
+    \item RBF kernel for non-linear mapping
+    \item GridSearchCV with parameters:
+    \begin{itemize}
+        \item $C \in [0.1, 1.0, 10.0, 100.0]$ (regularization)
+        \item $\epsilon \in [0.01, 0.1, 0.2]$ (tube width)
+        \item $\gamma \in [\text{'scale'}, \text{'auto'}]$ (kernel coefficient)
+    \end{itemize}
+    \item 3-fold cross-validation for computational efficiency
+    \item Cache size: 1000 MB for optimization
+\end{itemize}
+
+\textbf{Paper Adaptation:} The original paper \cite{manasa2020} compared multiple kernels; we focused on RBF as it showed best performance in preliminary tests.
+
+\textbf{Advantages:} Robust to outliers, effective in high-dimensional spaces, captures non-linear patterns.
+
+\textbf{Limitations:} Computationally expensive for large datasets, difficult to interpret, sensitive to hyperparameter choices.
+
+\subsubsection{Random Forest Regression}
+Based on Ho et al. (2021) \cite{ho2021}, Random Forest builds an ensemble of decision trees:
+
+\begin{equation}
+    \hat{y} = \frac{1}{T} \sum_{t=1}^{T} f_t(x)
+\end{equation}
+
+where $T$ is the number of trees and $f_t(x)$ is the prediction from tree $t$.
+
+\textbf{Implementation:}
+\begin{itemize}
+    \item GridSearchCV with parameters:
+    \begin{itemize}
+        \item \texttt{n\_estimators} $\in [100, 200, 300]$
+        \item \texttt{max\_depth} $\in [10, 20, 30, \text{None}]$
+        \item \texttt{min\_samples\_split} $\in [2, 5, 10]$
+        \item \texttt{min\_samples\_leaf} $\in [1, 2, 4]$
+        \item \texttt{max\_features} $\in [\text{'sqrt'}, \text{'log2'}]$
+    \end{itemize}
+    \item Total search space: 288 combinations
+    \item 3-fold cross-validation
+    \item \texttt{random\_state=42} for reproducibility
+\end{itemize}
+
+\textbf{Paper Adaptation:} Ho et al. \cite{ho2021} emphasized feature importance analysis; we extended this with comprehensive hyperparameter tuning.
+
+\textbf{Advantages:} Handles non-linearity naturally, provides feature importance, robust to outliers, reduces variance.
+
+\textbf{Limitations:} Less interpretable than linear models, computationally intensive, risk of overfitting without proper tuning.
+
+\subsection{Evaluation Metrics}
+
+All models were evaluated using multiple metrics:
+
+\begin{itemize}
+    \item \textbf{R² Score:} Proportion of variance explained
+    \begin{equation}
+        R^2 = 1 - \frac{\sum_{i=1}^{N} (y_i - \hat{y}_i)^2}{\sum_{i=1}^{N} (y_i - \bar{y})^2}
+    \end{equation}
+    
+    \item \textbf{Root Mean Squared Error (RMSE):}
+    \begin{equation}
+        RMSE = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y}_i)^2}
+    \end{equation}
+    
+    \item \textbf{Mean Absolute Error (MAE):}
+    \begin{equation}
+        MAE = \frac{1}{N} \sum_{i=1}^{N} |y_i - \hat{y}_i|
+    \end{equation}
+    
+    \item \textbf{Overfitting Gap:} Difference between training and validation R² scores
+\end{itemize}
+
+Metrics were computed on both log-transformed scale (training objective) and original dollar scale (interpretability).
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that the IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results for the network.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+% Be aware that for subfig.sty to generate the (a), (b), etc., subfigure
+% labels, the optional argument to \subfloat must be present. If a
+% subcaption is not desired, just leave its contents blank,
+% e.g., \subfloat[].
+
+
+% An example of a floating table. Note that, for IEEE style tables, the
+% \caption command should come BEFORE the table and, given that table
+% captions serve much like titles, are usually capitalized except for words
+% such as a, an, and, as, at, but, by, for, in, nor, of, on, or, the, to
+% and up, which are usually not capitalized unless they are the first or
+% last word of the caption. Table text will default to \footnotesize as
+% the IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that the IEEE does not put floats in the very first column
+% - or typically anywhere on the first page for that matter. Also,
+% in-text middle ("here") positioning is typically not used, but it
+% is allowed and encouraged for Computer Society conferences (but
+% not Computer Society journals). Most IEEE journals/conferences use
+% top floats exclusively. 
+% Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the
+% \fnbelowfloat command of the stfloats package.
+
+
+
+
+\section{Results and Evaluation}
+
+This section presents comprehensive experimental results including performance metrics, comparative analysis, and visual interpretations.
+
+\subsection{Model Performance Comparison}
+
+Table \ref{tab:model_comparison} summarizes the performance of all five models across multiple metrics.
+
+\begin{table*}[!t]
+\renewcommand{\arraystretch}{1.3}
+\caption{Comprehensive Model Performance Comparison}
+\label{tab:model_comparison}
+\centering
+\begin{tabular}{|l|c|c|c|c|c|c|}
+\hline
+\textbf{Model} & \textbf{Train R²} & \textbf{Val R²} & \textbf{Val RMSE (\$)} & \textbf{Val MAE (\$)} & \textbf{Gap} & \textbf{Rank} \\
+\hline
+Random Forest & 0.9784 & \textbf{0.8908} & \textbf{\$17,566} & \textbf{\$12,092} & 0.0876 & \textbf{1} \\
+\hline
+Linear Regression & 0.9493 & 0.8695 & \$19,375 & \$13,569 & 0.0798 & 2 \\
+\hline
+Ridge Regression & 0.9491 & 0.8689 & \$19,426 & \$13,604 & 0.0802 & 3 \\
+\hline
+SVR & 0.9483 & 0.8671 & \$20,199 & \$13,744 & 0.0812 & 4 \\
+\hline
+Polynomial (deg=2) & 1.0000 & 0.6400 & \$34,526 & \$24,118 & 0.3600 & 5 \\
+\hline
+\end{tabular}
+\end{table*}
+
+\subsection{Key Findings}
+
+\subsubsection{Best Performer: Random Forest}
+Random Forest achieved the highest validation R² of 0.8908, explaining 89.08\% of variance in housing prices. With an RMSE of \$17,566 and MAE of \$12,092, it demonstrated:
+\begin{itemize}
+    \item Superior predictive accuracy across all metrics
+    \item Excellent generalization (overfitting gap: 0.0876)
+    \item Ability to capture complex non-linear relationships
+    \item Robust performance without extensive feature engineering
+\end{itemize}
+
+Optimal hyperparameters found: \texttt{n\_estimators=300}, \texttt{max\_depth=30}, \texttt{min\_samples\_split=2}, \texttt{min\_samples\_leaf=1}, \texttt{max\_features='sqrt'}.
+
+\subsubsection{Strong Baselines: Linear and Ridge Regression}
+Linear Regression (R² = 0.8695) and Ridge Regression (R² = 0.8689) performed remarkably well:
+\begin{itemize}
+    \item Nearly identical performance despite regularization
+    \item Minimal overfitting gaps (<0.08)
+    \item Excellent interpretability with coefficient analysis
+    \item Fast training and prediction times
+\end{itemize}
+
+The similarity between Linear and Ridge suggests the preprocessing effectively addressed multicollinearity, making regularization less critical. Ridge's optimal $\alpha$ was likely small, confirming this observation.
+
+\subsubsection{Moderate Performance: SVR}
+SVR achieved R² = 0.8671 with RMSE = \$20,199:
+\begin{itemize}
+    \item Slightly underperformed compared to simpler linear models
+    \item Best parameters: $C=10.0$, $\epsilon=0.1$, $\gamma=$'scale'
+    \item Computational cost significantly higher than linear models
+    \item Limited benefit over simpler approaches for this dataset
+\end{itemize}
+
+\subsubsection{Severe Overfitting: Polynomial Regression}
+Polynomial Regression exhibited catastrophic overfitting:
+\begin{itemize}
+    \item Perfect training fit (R² = 1.0000)
+    \item Poor validation performance (R² = 0.6400)
+    \item Overfitting gap of 0.36 (highest among all models)
+    \item Feature explosion: 267 → 36,045 features
+    \item High variance predictions
+\end{itemize}
+
+This demonstrates the curse of dimensionality and the importance of regularization for high-degree polynomial models.
+
+\subsection{Visualization Analysis}
+
+Figures \ref{fig:rf_pred} through \ref{fig:poly_pred} show actual vs. predicted plots for all models. Key observations:
+
+\begin{itemize}
+    \item Random Forest predictions cluster tightly around the diagonal, indicating high accuracy
+    \item Linear and Ridge show similar patterns with slight underprediction for high-value properties
+    \item SVR exhibits similar behavior to linear models but with slightly higher variance
+    \item Polynomial Regression shows significant scatter, confirming overfitting
+\end{itemize}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{../results/randomforest_actualvpredicted}
+\caption{Random Forest: Actual vs. Predicted prices. Tight clustering around the diagonal indicates excellent predictive accuracy with R² = 0.8908.}
+\label{fig:rf_pred}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{../results/linear_actualvpredicted}
+\caption{Linear Regression: Actual vs. Predicted prices. Strong linear relationship with R² = 0.8695, demonstrating competitive performance despite model simplicity.}
+\label{fig:linear_pred}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{../results/ridge_actualvpredicted}
+\caption{Ridge Regression: Actual vs. Predicted prices. Performance nearly identical to Linear Regression (R² = 0.8689), confirming effective multicollinearity management.}
+\label{fig:ridge_pred}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{../results/svr_actualvpredicted}
+\caption{SVR: Actual vs. Predicted prices. Moderate performance (R² = 0.8671) with slightly higher prediction variance compared to linear models.}
+\label{fig:svr_pred}
+\end{figure}
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=3.5in]{../results/poly_actualvpredicted}
+\caption{Polynomial Regression: Actual vs. Predicted prices. Significant scatter and deviation from diagonal demonstrates severe overfitting (validation R² = 0.64).}
+\label{fig:poly_pred}
+\end{figure}
+
+\subsection{Performance by Price Range}
+
+Analysis of prediction errors across price ranges revealed:
+
+\begin{itemize}
+    \item \textbf{Low-price homes (\$50k-\$150k):} All models performed well with <10\% error
+    \item \textbf{Mid-price homes (\$150k-\$300k):} Random Forest maintained best accuracy; linear models showed slight underprediction
+    \item \textbf{High-price homes (>\$300k):} All models struggled with limited training data; Random Forest still most reliable
+\end{itemize}
+
+\subsection{Computational Efficiency}
+
+Training time comparison on Intel Core i7 (8 cores):
+
+\begin{itemize}
+    \item Linear Regression: <1 second
+    \item Ridge Regression: ~5 seconds (with GridSearchCV)
+    \item Polynomial Regression: ~3 seconds (feature generation + fitting)
+    \item SVR: ~45 minutes (GridSearchCV with 24 combinations)
+    \item Random Forest: ~8 minutes (GridSearchCV with 288 combinations)
+\end{itemize}
+
+\section{Discussion}
+
+\subsection{Model Performance Analysis}
+
+\subsubsection{Why Random Forest Excelled}
+Random Forest's superior performance can be attributed to:
+
+\begin{enumerate}
+    \item \textbf{Non-linear Capability:} Housing prices involve complex interactions (e.g., neighborhood × square footage) that decision trees naturally capture
+    \item \textbf{Ensemble Strength:} Averaging 300 trees reduced variance while maintaining low bias
+    \item \textbf{Feature Robustness:} Automatic feature selection through random subsampling
+    \item \textbf{Outlier Resilience:} Tree-based splits are less affected by extreme values
+\end{enumerate}
+
+\subsubsection{Linear Models' Surprising Strength}
+The near-equivalent performance of Linear and Ridge Regression (R² $\approx$ 0.87) was unexpected but explainable:
+
+\begin{enumerate}
+    \item \textbf{Effective Preprocessing:} Log transformation linearized many relationships
+    \item \textbf{Feature Engineering:} Removing skewed/correlated features reduced multicollinearity
+    \item \textbf{Domain Characteristics:} Many housing features (square footage, age, location) have approximately linear relationships with price in log space
+    \item \textbf{Sufficient Data:} 1,168 training samples with 267 features provided adequate constraint
+\end{enumerate}
+
+\subsubsection{SVR's Limited Advantage}
+Despite theoretical advantages, SVR underperformed because:
+
+\begin{enumerate}
+    \item \textbf{Hyperparameter Sensitivity:} RBF kernel requires careful tuning; our grid may not have covered optimal regions
+    \item \textbf{Computational Constraints:} Limited search space due to time constraints
+    \item \textbf{Linear Dominance:} After preprocessing, relationships were sufficiently linear
+    \item \textbf{Curse of Dimensionality:} 267 features may have reduced kernel effectiveness
+\end{enumerate}
+
+\subsubsection{Polynomial Regression Failure}
+The severe overfitting illustrates classic machine learning pitfalls:
+
+\begin{enumerate}
+    \item \textbf{Parameter Explosion:} $36,045$ parameters vs. $1,168$ samples ($\frac{p}{n} \approx 31$)
+    \item \textbf{Insufficient Regularization:} Standard linear regression cannot constrain such models
+    \item \textbf{Memorization:} Perfect training fit indicates the model memorized noise
+\end{enumerate}
+
+\subsection{Strengths and Limitations of Literature Methods}
+
+\subsubsection{SVR (Manasa et al. 2020) \cite{manasa2020}}
+\textbf{Strengths:}
+\begin{itemize}
+    \item Theoretically sound framework with margin maximization
+    \item Robust to outliers through $\epsilon$-insensitive loss
+    \item Flexible kernel functions for non-linear patterns
+    \item Reproducible methodology with clear mathematical foundation
+\end{itemize}
+
+\textbf{Limitations:}
+\begin{itemize}
+    \item Computationally expensive for large datasets (O($n^2$) to O($n^3$))
+    \item Hyperparameter tuning challenging (3 interdependent parameters)
+    \item Limited interpretability compared to linear models
+    \item Performance gains minimal for well-preprocessed data
+\end{itemize}
+
+\textbf{Reproduction Challenges:}
+\begin{itemize}
+    \item Original paper used different dataset; adaptation required
+    \item Kernel selection heuristics not fully specified
+    \item Cross-validation strategy adjusted for computational feasibility
+\end{itemize}
+
+\subsubsection{Random Forest (Ho et al. 2021) \cite{ho2021}}
+\textbf{Strengths:}
+\begin{itemize}
+    \item Excellent out-of-box performance with minimal tuning
+    \item Provides feature importance rankings
+    \item Handles mixed data types naturally
+    \item Parallelizable training process
+    \item Robust to overfitting through ensemble averaging
+\end{itemize}
+
+\textbf{Limitations:}
+\begin{itemize}
+    \item Less interpretable than linear models (black-box nature)
+    \item Large memory footprint (storing 300 trees)
+    \item Prediction time scales with number of trees
+    \item Cannot extrapolate beyond training data range
+\end{itemize}
+
+\textbf{Reproduction Challenges:}
+\begin{itemize}
+    \item Extensive hyperparameter grid required thorough search
+    \item Feature importance analysis needed additional implementation
+    \item Paper's specific feature engineering not fully reproducible
+\end{itemize}
+
+\subsection{Practical Implications}
+
+For production deployment, model selection depends on requirements:
+
+\begin{itemize}
+    \item \textbf{Maximum Accuracy:} Random Forest (R² = 0.8908)
+    \item \textbf{Interpretability:} Linear/Ridge Regression (coefficients explain predictions)
+    \item \textbf{Speed:} Linear Regression (<1s training, microsecond predictions)
+    \item \textbf{Balance:} Ridge Regression (accuracy + interpretability + efficiency)
+\end{itemize}
+
+\subsection{Challenges During Implementation}
+
+\subsubsection{Data Quality}
+\begin{itemize}
+    \item Extensive missing data required careful imputation strategy
+    \item Outlier identification balanced between removing noise and retaining information
+    \item Categorical encoding significantly expanded feature space
+\end{itemize}
+
+\subsubsection{Computational Resources}
+\begin{itemize}
+    \item SVR GridSearchCV required ~45 minutes despite reduced search space
+    \item Polynomial feature generation consumed significant memory
+    \item Random Forest hyperparameter tuning required parallel processing
+\end{itemize}
+
+\subsubsection{Hyperparameter Optimization}
+\begin{itemize}
+    \item Balancing search thoroughness vs. computational cost
+    \item Cross-validation fold selection (3-fold vs. 5-fold trade-off)
+    \item Interdependencies between preprocessing and model parameters
+\end{itemize}
+
+\subsubsection{Reproducibility}
+\begin{itemize}
+    \item Ensuring random seeds for consistent results
+    \item Documenting all preprocessing steps
+    \item Adapting literature methods to different dataset characteristics
+\end{itemize}
+
+\section{Conclusion}
+
+\subsection{Summary of Key Insights}
+
+This study systematically compared five machine learning regression models for housing price prediction, yielding several important findings:
+
+\begin{enumerate}
+    \item \textbf{Random Forest Superiority:} Achieved best performance (R² = 0.8908, RMSE = \$17,566) by capturing complex non-linear relationships through ensemble learning
+    
+    \item \textbf{Linear Model Viability:} Simple Linear and Ridge Regression achieved competitive performance (R² $\approx$ 0.87) when combined with effective preprocessing, demonstrating that sophisticated algorithms aren't always necessary
+    
+    \item \textbf{Preprocessing Impact:} Comprehensive feature engineering (log transformation, outlier removal, encoding) was crucial for all models' success
+    
+    \item \textbf{Overfitting Risk:} Polynomial Regression's failure (training R² = 1.0, validation R² = 0.64) highlighted the importance of model complexity management
+    
+    \item \textbf{Computational Trade-offs:} SVR's 45-minute training time provided minimal benefit over 1-second Linear Regression, emphasizing efficiency considerations
+    
+    \item \textbf{Literature Reproducibility:} Successfully implemented methods from recent papers \cite{manasa2020, ho2021}, though adaptations were necessary for different data characteristics
+\end{enumerate}
+
+\subsection{Practical Recommendations}
+
+For housing price prediction projects:
+
+\begin{itemize}
+    \item Start with Linear/Ridge Regression as strong baselines
+    \item Invest heavily in preprocessing and feature engineering
+    \item Use Random Forest when maximum accuracy is critical
+    \item Apply regularization for high-dimensional feature spaces
+    \item Consider computational constraints in production environments
+\end{itemize}
+
+\subsection{Future Work Suggestions}
+
+Several avenues for extending this research:
+
+\begin{enumerate}
+    \item \textbf{Advanced Ensemble Methods:}
+    \begin{itemize}
+        \item Gradient Boosting (XGBoost, LightGBM)
+        \item Stacking combinations of multiple models
+        \item Weighted ensemble averaging
+    \end{itemize}
+    
+    \item \textbf{Deep Learning Approaches:}
+    \begin{itemize}
+        \item Neural networks with embedding layers for categorical features
+        \item Attention mechanisms for feature importance
+        \item Transformer-based architectures for tabular data
+    \end{itemize}
+    
+    \item \textbf{Feature Engineering:}
+    \begin{itemize}
+        \item Domain-specific interaction terms (e.g., price per square foot by neighborhood)
+        \item Temporal features (market trends, seasonality)
+        \item External data integration (school ratings, crime statistics, economic indicators)
+    \end{itemize}
+    
+    \item \textbf{Hyperparameter Optimization:}
+    \begin{itemize}
+        \item Bayesian optimization for efficient search
+        \item AutoML frameworks (Auto-sklearn, TPOT)
+        \item Neural Architecture Search (NAS)
+    \end{itemize}
+    
+    \item \textbf{Uncertainty Quantification:}
+    \begin{itemize}
+        \item Prediction intervals using quantile regression
+        \item Conformal prediction for distribution-free uncertainty
+        \item Bayesian approaches for probabilistic forecasts
+    \end{itemize}
+    
+    \item \textbf{Interpretability:}
+    \begin{itemize}
+        \item SHAP values for feature contribution analysis
+        \item LIME for local explanations
+        \item Partial dependence plots
+    \end{itemize}
+    
+    \item \textbf{Transfer Learning:}
+    \begin{itemize}
+        \item Pre-trained models from other housing datasets
+        \item Domain adaptation techniques
+        \item Multi-task learning across different property types
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Concluding Remarks}
+
+This comprehensive study demonstrates that effective housing price prediction requires balancing model sophistication, computational efficiency, and interpretability. While advanced methods like Random Forest provide marginal accuracy improvements, simple linear models with thoughtful preprocessing remain competitive and practical. The successful reproduction of literature methods validates their applicability while highlighting the importance of domain-specific adaptations. As machine learning continues to evolve, the fundamental principles demonstrated here---rigorous preprocessing, systematic evaluation, and careful model selection---will remain essential for successful real-world applications.
+
+\section{Implementation Code}
+
+All source code, datasets, and documentation for this project are available in a public GitHub repository:
+
+\begin{center}
+\url{https://github.com/herodegon/ITCS5356_IntroMLCapstone}
+\end{center}%
+
+\subsection{Dependencies}
+
+All code was developed and tested using:
+\begin{itemize}
+    \item Python 3.9+
+    \item scikit-learn 1.3.0
+    \item pandas 2.0.3
+    \item numpy 1.24.3
+    \item matplotlib 3.7.2
+    \item seaborn 0.12.2
+\end{itemize}%
+
+Complete dependency list available in \texttt{requirements.txt}.%
+
+\subsection{Reproducibility}
+
+All experiments use fixed random seeds (\texttt{random\_state=42}) to ensure reproducibility. Preprocessing steps, model configurations, and evaluation metrics are fully documented in each notebook with detailed markdown explanations and code comments.
+
+
+
+
+
+% if have a single appendix:
+%\appendix[Proof of the Zonklar Equations]
+% or
+%\appendix  % for no appendix heading
+% do not use \section anymore after \appendix, only \section*
+% is possibly needed
+
+% use appendices with more than one appendix
+% then use \section to start each appendix
+% you must declare a \section before using any
+% \subsection or using \label (\appendices by itself
+% starts a section numbered zero.)
+%
+
+
+% Can use something like this to put references on a page
+% by themselves when using endfloat and the captionsoff option.
+\ifCLASSOPTIONcaptionsoff
+  \newpage
+\fi
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+
+% biography section
+% 
+% If you have an EPS/PDF photo (graphicx package needed) extra braces are
+% needed around the contents of the optional argument to biography to prevent
+% the LaTeX parser from getting confused when it sees the complicated
+% \includegraphics command within an optional argument. (You could create
+% your own custom macro containing the \includegraphics command to make things
+% simpler here.)
+%\begin{IEEEbiography}[{\includegraphics[width=1in,height=1.25in,clip,keepaspectratio]{mshell}}]{Michael Shell}
+% or if you just want to reserve a space for a photo:
+
+
+% if you will not have a photo at all:
+
+% insert where needed to balance the two columns on the last page with
+% biographies
+%\newpage
+
+% You can push biographies down or up by placing
+% a \vfill before or after them. The appropriate
+% use of \vfill depends on what kind of text is
+% on the last page and whether or not the columns
+% are being equalized.
+
+%\vfill
+
+% Can be used to pull up biographies so that the bottom of the last one
+% is flush with the other column.
+%\enlargethispage{-5in}
+
+
+
+% that's all folks
+% Bibliography
+\begin{thebibliography}{9}
+
+\bibitem{manasa2020}
+J. Manasa, R. Gupta, and N. S. Narahari, 
+``Machine Learning based Predicting House Prices using Regression Techniques,''
+in \textit{2020 2nd International Conference on Innovative Mechanisms for Industry Applications (ICIMIA)}, 
+Bangalore, India, 2020, pp. 624--630,
+doi: 10.1109/ICIMIA48430.2020.9074952.
+
+\bibitem{ho2021}
+W. K. O. Ho, B. S. Tang, and S. W. Wong,
+``Predicting property prices with machine learning algorithms,''
+\textit{Journal of Property Research},
+vol. 38, no. 1, pp. 48--70, 2021,
+doi: 10.1080/09599916.2020.1832558.
+
+\bibitem{kaggle_housing}
+``House Prices - Advanced Regression Techniques,''
+Kaggle, 2016. [Online]. Available: \url{https://www.kaggle.com/c/house-prices-advanced-regression-techniques}
+
+\bibitem{scikit-learn}
+F. Pedregosa \textit{et al.},
+``Scikit-learn: Machine Learning in Python,''
+\textit{Journal of Machine Learning Research},
+vol. 12, pp. 2825--2830, 2011.
+
+\bibitem{pandas}
+W. McKinney,
+``Data Structures for Statistical Computing in Python,''
+in \textit{Proceedings of the 9th Python in Science Conference},
+2010, pp. 56--61.
+
+\bibitem{numpy}
+C. R. Harris \textit{et al.},
+``Array programming with NumPy,''
+\textit{Nature},
+vol. 585, no. 7825, pp. 357--362, Sep. 2020,
+doi: 10.1038/s41586-020-2649-2.
+
+\bibitem{matplotlib}
+J. D. Hunter,
+``Matplotlib: A 2D Graphics Environment,''
+\textit{Computing in Science \& Engineering},
+vol. 9, no. 3, pp. 90--95, 2007,
+doi: 10.1109/MCSE.2007.55.
+
+\end{thebibliography}
+
+\end{document}
+
+
